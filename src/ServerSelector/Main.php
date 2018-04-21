@@ -8,6 +8,7 @@ use pocketmine\event\PlayerJoinEvent;
 use pocketmine\event\PlayerQuitEvent;
 use pocketmine\event\PlayerInteractEvent;
 use pocketmine\event\PlayerPreLoginEvent;
+use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
