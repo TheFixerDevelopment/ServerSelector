@@ -4,10 +4,11 @@ namespace ServerSelector;
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-use pocketmine\event\PlayerJoinEvent;
-use pocketmine\event\PlayerQuitEvent;
-use pocketmine\event\PlayerInteractEvent;
-use pocketmine\event\PlayerPreLoginEvent;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerPreLoginEvent;
+use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 
