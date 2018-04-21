@@ -10,6 +10,10 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\utils\TextFormat;
+use pocketmine\event\player\PlayerDropItemEvent;
+use pocketmine\event\inventory\InventoryPickupItemEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
@@ -17,6 +21,19 @@ class Main extends PluginBase implements Listener {
 public function onEnable(): void{
     $this->getLogger()->info("Plugin has been enabled.");
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
+}
+public function onPickup(InventoryPickupItemEvent $event){
+		$player = $event->getInventory()->getHolder();
+		$defaultlevel = $this->getServer()->getDefaultLevel();
+		$event->setCancelled();
+}
+public function onDrop(PlayerDropItemEvent $event){
+		$player = $event->getPlayer();
+		$defaultlevel = $this->getServer()->getDefaultLevel();
+		$event->setCancelled();
+}
+public function onHunger(PlayerExhaustEvent $event){
+	$event->setCancelled(true);
 }
 public function getSelector(Player $player){
     $inv = $player->getInventory();
@@ -55,6 +72,19 @@ public function onPreLogin(PlayerPreLoginEvent $event){
 			$this->getSelector($player);
                 }
 	}
+public function onHit(EntityDamageEvent $event){
+		$entity = $event->getEntity();
+		if ($entity instanceof Player) {
+			if ($event instanceof EntityDamageByEntityEvent) {
+				$damager = $event->getDamager();
+				if ($damager instanceof Player) {
+					if ($entity->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
+						$event->setCancelled();
+					}
+				}
+			}
+		}
+	}
       public function getItems(Player $player){
 		$name = $player->getName();
 		$inv = $player->getInventory();
@@ -65,16 +95,30 @@ public function onPreLogin(PlayerPreLoginEvent $event){
       public function noInvMove(InventoryTransactionEvent $event){
 		$event->setCancelled(true);
 	}
+	public function onDamage(EntityDamageEvent $event){
+		$player = $event->getEntity();
+		if ($player->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
+			if ($player instanceof Player) {
+				$event->setCancelled();
+			}
+		}
+	}
+
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$this->getItems($player);
+		
 		$event->setJoinMessage("");
 		$event->getPlayer()->setFood("20");
 		$player->setGamemode(0);
 		
-		$this->getItems($player);
+		//$this->getItems($player);
 	}
+        public function onQuit(PlayerQuitEvent $event){
+		$event->setQuitMessage("");
+	}
+
       public function onInteract(PlayerInteractEvent $event){
           $player = $event->getPlayer();
           $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
@@ -88,5 +132,6 @@ public function onPreLogin(PlayerPreLoginEvent $event){
 		if ($in == TextFormat::RESET . TextFormat::GOLD . "KitPvP") {
 			$event->getPlayer()->transfer("voidkitpvppe.ml", "25630");
 		}
-            }
+	    return true;
       }
+}
