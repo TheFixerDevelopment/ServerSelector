@@ -22,26 +22,26 @@ public function getSelector(Player $player){
     $inv->clearAll();
 		$exit = Item::get(351, 1, 1);
 		$exit->setCustomName(TextFormat::RESET . TextFormat::RED . "Exit");
-		$Factions = Item::get(46,1, 1);
+		$Factions = Item::get(46, 1, 1);
 		$Factions->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§aFactions §5(Tap Me!)");
 		$Prisons = Item::get(101, 1, 1);
 		$Prisons->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§bPrisons §5(Tap Me!)");
 		$KitPvP = Item::get(276, 1, 1);
 		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§cKitPvP - §7Coming Soon.");
-		$Bald = Item::get(322, 1, 1);
-		$Bald->setCustomName(TextFormat::RESET . TextFormat::RED . "§d§lHCF §5(Tap Me!)");
+		$HCF = Item::get(322, 1, 1);
+		$HCF->setCustomName(TextFormat::RESET . TextFormat::RED . "§d§lHCF §5(Tap Me!)");
 		$inv->setItem(8, $exit);
 		$inv->setItem(0, $Factions);
 		$inv->setItem(2, $Prisons);
 		$inv->setItem(4, $KitPvP);
 		$inv->setItem(6, $HCF);
 }
-public function onPreLogin(PlayerPreLoginEvent $event)
-	{
+public function onPreLogin(PlayerPreLoginEvent $event){
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$ip = $player->getAddress();
 		$cid = $player->getClientId();
+	        $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
 		if (!$player->isWhitelisted($name)) {
 			$msg =
 				TextFormat::BOLD . TextFormat::GRAY . "+++-----------+++-----------+++\n" .
