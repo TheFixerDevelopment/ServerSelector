@@ -4,6 +4,7 @@ namespace ServerSelector;
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerInteractEvent;
