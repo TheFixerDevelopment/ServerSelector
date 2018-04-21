@@ -61,6 +61,19 @@ public function onPreLogin(PlayerPreLoginEvent $event){
 		$item1 = Item::get(345, 0, 1);
 		$item1->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§b§lServer Selector (§cTap me!)");
       }
+      public function noInvMove(InventoryTransactionEvent $event){
+		$event->setCancelled(true);
+	}
+	public function onJoin(PlayerJoinEvent $event){
+		$player = $event->getPlayer();
+		$name = $player->getName();
+		$this->getItems($player);
+		$event->setJoinMessage("");
+		$event->getPlayer()->setFood("20");
+		$player->setGamemode(0);
+		
+		$this->getItems($player);
+	}
       public function onInteract(PlayerInteractEvent $event){
           $player = $event->getPlayer();
           $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
