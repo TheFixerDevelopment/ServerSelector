@@ -1,5 +1,5 @@
 name: ServerSelector
-version: 1.0.0-BETA
+version: 1.0.0-ALPHA
 api: [3.0.0-ALPHA11, 3.0.0-ALPHA12]
 main: ServerSelector\Main
 author: Zeao
