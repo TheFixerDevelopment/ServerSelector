@@ -46,7 +46,7 @@ public function getSelector(Player $player){
 		$Prisons = Item::get(101, 1, 1);
 		$Prisons->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§bPrisons §5(Tap Me!)");
 		$KitPvP = Item::get(276, 1, 1);
-		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§cKitPvP - §5(Tap me!");
+		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§cKitPvP - §5(Tap me!)");
 		$HCF = Item::get(322, 1, 1);
 		$HCF->setCustomName(TextFormat::RESET . TextFormat::RED . "§d§lHCF §5(Tap Me!)");
 		$inv->setItem(8, $exit);
