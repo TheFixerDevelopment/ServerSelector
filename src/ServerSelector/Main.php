@@ -100,8 +100,8 @@ public function onHit(EntityDamageEvent $event)
 		$name = $player->getName();
 		$inv = $player->getInventory();
 		$inv->clearAll();
-		$item1 = Item::get(345, 0, 1);
-		$item1->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§b§lServer Selector (§cTap me!)");
+		$item = Item::get(345, 0, 1);
+		$item->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§b§lServer Selector (§cTap me!)");
       }
       public function noInvMove(InventoryTransactionEvent $event)
       {
@@ -116,24 +116,29 @@ public function onHit(EntityDamageEvent $event)
 			}
 		}
 	}
-
+	public function onPlace(BlockPlaceEvent $event)
+	{
+			$event->setCancelled();
+	}
+	public function onBreak(BlockBreakEvent $event)
+	{
+			$event->setCancelled();
+	}
 	public function onJoin(PlayerJoinEvent $event)
 	{
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$this->getItems($player);
 		
-		$event->getPlayer()->setJoinMessage("");
-		$name->setFood(20);
-		$name->setGamemode(0);
+		$event->setJoinMessage("");
+		$event->getPlayer()->setFood("20");
+		$player->setGamemode(0);
 		
 		//$this->getItems($player);
 	}
         public function onQuit(PlayerQuitEvent $event)
-	{
-		$player = $event->getPlayer();
-		
-		$event->getPlayer()->setQuitMessage("");
+	{	
+		$event->setQuitMessage("");
 	}
 
       public function onInteract(PlayerInteractEvent $event)
