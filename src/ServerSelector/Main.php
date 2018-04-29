@@ -18,25 +18,32 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
-    
-public function onEnable(): void{
+  
+public $event;
+	
+public function onEnable(): void
+{
     $this->getLogger()->info("Plugin has been enabled.");
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
 }
-public function onPickup(InventoryPickupItemEvent $event){
+public function onPickup(InventoryPickupItemEvent $event)
+{
 		$player = $event->getInventory()->getHolder();
 		$defaultLevel = $this->getServer()->getDefaultLevel();
-		$event->setCancelled(true);
+		$event->setCancelled();
 }
-public function onDrop(PlayerDropItemEvent $event){
+public function onDrop(PlayerDropItemEvent $event)
+{
 		$player = $event->getPlayer();
 		$defaultLevel = $this->getServer()->getDefaultLevel();
-		$event->setCancelled(true);
+		$event->setCancelled();
 }
-public function onHunger(PlayerExhaustEvent $event){
+public function onHunger(PlayerExhaustEvent $event)
+{
 	$event->setCancelled(true);
 }
-public function getSelector(Player $player){
+public function getSelector(Player $player)
+{
     $inv = $player->getInventory();
     $inv->clearAll();
 		$exit = Item::get(351, 1, 1);
@@ -55,7 +62,8 @@ public function getSelector(Player $player){
 		$inv->setItem(4, $KitPvP);
 		$inv->setItem(6, $HCF);
 }
-public function onPreLogin(PlayerPreLoginEvent $event){
+public function onPreLogin(PlayerPreLoginEvent $event)
+{
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$ip = $player->getAddress();
@@ -73,39 +81,44 @@ public function onPreLogin(PlayerPreLoginEvent $event){
 			$this->getSelector($player);
                 }
 	}
-public function onHit(EntityDamageEvent $event){
+public function onHit(EntityDamageEvent $event)
+{
 		$entity = $event->getEntity();
 		if ($entity instanceof Player) {
 			if ($event instanceof EntityDamageByEntityEvent) {
 				$damager = $event->getDamager();
 				if ($damager instanceof Player) {
 					if ($entity->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
-						$event->setCancelled(true);
+						$event->setCancelled();
 					}
 				}
 			}
 		}
 	}
-      public function getItems(Player $player){
+      public function getItems(Player $player)
+      {
 		$name = $player->getName();
 		$inv = $player->getInventory();
 		$inv->clearAll();
 		$item1 = Item::get(345, 0, 1);
 		$item1->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§b§lServer Selector (§cTap me!)");
       }
-      public function noInvMove(InventoryTransactionEvent $event){
+      public function noInvMove(InventoryTransactionEvent $event)
+      {
 		$event->setCancelled(true);
 	}
-	public function onDamage(EntityDamageEvent $event){
+	public function onDamage(EntityDamageEvent $event)
+	{
 		$player = $event->getEntity();
 		if ($player->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
 			if ($player instanceof Player) {
-				$event->setCancelled(true);
+				$event->setCancelled();
 			}
 		}
 	}
 
-	public function onJoin(PlayerJoinEvent $event){
+	public function onJoin(PlayerJoinEvent $event)
+	{
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		$this->getItems($player);
@@ -116,13 +129,15 @@ public function onHit(EntityDamageEvent $event){
 		
 		//$this->getItems($player);
 	}
-        public function onQuit(PlayerQuitEvent $event){
+        public function onQuit(PlayerQuitEvent $event)
+	{
 		$player = $event->getPlayer();
 		
 		$event->getPlayer()->setQuitMessage("");
 	}
 
-      public function onInteract(PlayerInteractEvent $event){
+      public function onInteract(PlayerInteractEvent $event)
+      {
           $player = $event->getPlayer();
           $in = $inventory->getItemInHand()->getCustomName();
           if ($in == TextFormat::RESET . TextFormat::BLUE . "Factions") {
