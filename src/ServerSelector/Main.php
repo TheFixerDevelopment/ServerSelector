@@ -25,13 +25,13 @@ public function onEnable(): void{
 }
 public function onPickup(InventoryPickupItemEvent $event){
 		$player = $event->getInventory()->getHolder();
-		$defaultlevel = $this->getServer()->getDefaultLevel();
-		$event->setCancelled();
+		$defaultLevel = $this->getServer()->getDefaultLevel();
+		$event->setCancelled(true);
 }
 public function onDrop(PlayerDropItemEvent $event){
 		$player = $event->getPlayer();
-		$defaultlevel = $this->getServer()->getDefaultLevel();
-		$event->setCancelled();
+		$defaultLevel = $this->getServer()->getDefaultLevel();
+		$event->setCancelled(true);
 }
 public function onHunger(PlayerExhaustEvent $event){
 	$event->setCancelled(true);
@@ -46,7 +46,7 @@ public function getSelector(Player $player){
 		$Prisons = Item::get(101, 1, 1);
 		$Prisons->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§bPrisons §5(Tap Me!)");
 		$KitPvP = Item::get(276, 1, 1);
-		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§cKitPvP - §7Coming Soon.");
+		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§cKitPvP - §5(Tap me!");
 		$HCF = Item::get(322, 1, 1);
 		$HCF->setCustomName(TextFormat::RESET . TextFormat::RED . "§d§lHCF §5(Tap Me!)");
 		$inv->setItem(8, $exit);
@@ -60,7 +60,7 @@ public function onPreLogin(PlayerPreLoginEvent $event){
 		$name = $player->getName();
 		$ip = $player->getAddress();
 		$cid = $player->getClientId();
-	        $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
+	        $in = $inventory->getItemInHand()->getCustomName();
 		if (!$player->isWhitelisted($name)) {
 			$msg =
 				TextFormat::BOLD . TextFormat::GRAY . "+++-----------+++-----------+++\n" .
@@ -80,7 +80,7 @@ public function onHit(EntityDamageEvent $event){
 				$damager = $event->getDamager();
 				if ($damager instanceof Player) {
 					if ($entity->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
-						$event->setCancelled();
+						$event->setCancelled(true);
 					}
 				}
 			}
@@ -100,7 +100,7 @@ public function onHit(EntityDamageEvent $event){
 		$player = $event->getEntity();
 		if ($player->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
 			if ($player instanceof Player) {
-				$event->setCancelled();
+				$event->setCancelled(true);
 			}
 		}
 	}
@@ -110,20 +110,21 @@ public function onHit(EntityDamageEvent $event){
 		$name = $player->getName();
 		$this->getItems($player);
 		
-		$event->setJoinMessage("");
-		$event->getPlayer()->setFood("20");
-		$player->setGamemode(0);
+		$event->getPlayer()->setJoinMessage("");
+		$name->setFood(20);
+		$name->setGamemode(0);
 		
 		//$this->getItems($player);
 	}
         public function onQuit(PlayerQuitEvent $event){
-		$event->setQuitMessage("");
+		$player = $event->getPlayer();
+		
+		$event->getPlayer()->setQuitMessage("");
 	}
 
       public function onInteract(PlayerInteractEvent $event){
           $player = $event->getPlayer();
-          $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
-          $inv = $player->getInventory();
+          $in = $inventory->getItemInHand()->getCustomName();
           if ($in == TextFormat::RESET . TextFormat::BLUE . "Factions") {
 			$event->getPlayer()->transfer("voidfactionspe.ml", "19132");
 		}
