@@ -68,7 +68,7 @@ public function onPreLogin(PlayerPreLoginEvent $event)
 		$name = $player->getName();
 		$ip = $player->getAddress();
 		$cid = $player->getClientId();
-	        $in = $inventory->getItemInHand()->getCustomName();
+	        $in = $event->getPlayer()->getInventory->getItemInHand()->getCustomName();
 		if (!$player->isWhitelisted($name)) {
 			$msg =
 				TextFormat::BOLD . TextFormat::GRAY . "+++-----------+++-----------+++\n" .
@@ -139,7 +139,7 @@ public function onHit(EntityDamageEvent $event)
       public function onInteract(PlayerInteractEvent $event)
       {
           $player = $event->getPlayer();
-          $in = $inventory->getItemInHand()->getCustomName();
+          $in = $event->getPlayer()->getInventory()->getItemInHand()->getCustomName();
           if ($in == TextFormat::RESET . TextFormat::BLUE . "Factions") {
 			$event->getPlayer()->transfer("voidfactionspe.ml", "19132");
 		}
