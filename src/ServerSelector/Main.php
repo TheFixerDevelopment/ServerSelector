@@ -7,17 +7,23 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\inventory\InventoryOpenEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
+use pocketmine\level\Level;
+use pocketmine\utils\Terminal;
+use pocketmine\level\Position;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\utils\TextFormat;
+use pocketmine\Server;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\Player;
 
-class Main extends PluginBase implements Listener {
+class Main extends PluginBase implements Listener
+{
   
 public $event;
 	
