@@ -56,6 +56,8 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 				TextFormat::GOLD . "Try again soon";
 			$player->close("", $msg);
 		}
+	        $player->getInventory()->clearAll();
+	        $player->getInventory()->setSize(9);
 		$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector (§bTap me!)"));
         }
       public function noInvMove(InventoryTransactionEvent $ev) {
@@ -80,6 +82,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$player->setFood(20);
        	$player->setHealth(20);
        	$player->setGamemode(0);
+        $player->getInventory()->setSize(9);
        	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"));
 		$ev->setJoinMessage("");
 	}
