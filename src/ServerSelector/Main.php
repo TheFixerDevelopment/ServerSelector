@@ -24,25 +24,25 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\Player;
 
-class Main extends PluginBase implements Listener{
+class Main extends PluginBase implements Listener {
 	
 public function onEnable(): void {
     $this->getLogger()->info("Plugin has been enabled.");
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
 }
-public function onPickup(InventoryPickupItemEvent $ev){
+public function onPickup(InventoryPickupItemEvent $ev) {
 		$ev->setCancelled(true);
 }
-public function ItemMove(PlayerDropItemEvent $ev){
+public function ItemMove(PlayerDropItemEvent $ev) {
         $ev->setCancelled(true);
 }
- public function onConsume(PlayerItemConsumeEvent $ev){
+ public function onConsume(PlayerItemConsumeEvent $ev) {
         $ev->setCancelled(true);
 }
-public function onHunger(PlayerExhaustEvent $ev){
+public function onHunger(PlayerExhaustEvent $ev) {
 	$ev->setCancelled(true);
 }
-public function onPreLogin(PlayerPreLoginEvent $ev){
+public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$player = $ev->getPlayer();
 		$name = $player->getName();
 		$ip = $player->getAddress();
@@ -58,23 +58,23 @@ public function onPreLogin(PlayerPreLoginEvent $ev){
 		$player->getInventory()->setSize(9);
 		$player->getInventory()->setItem(0, Item::get(345)->setCustomName("§a§lServer Selector (§bTap me!)"));
         }
-      public function noInvMove(InventoryTransactionEvent $ev){
+      public function noInvMove(InventoryTransactionEvent $ev) {
 		$ev->setCancelled(true);
 	}
 	public function onDamage(EntityDamageEvent $ev){
-      		if($ev->getCause() === EntityDamageEvent::CAUSE_FALL){
+      		if($ev->getCause() === EntityDamageEvent::CAUSE_FALL) {
           	$ev->setCancelled(true);
         	}
     	}
-	public function onPlace(BlockPlaceEvent $ev){
+	public function onPlace(BlockPlaceEvent $ev) {
 			$player = $ev->getPlayer();
 			$ev->setCancelled(true);
 	}
-	public function onBreak(BlockBreakEvent $ev){
+	public function onBreak(BlockBreakEvent $ev) {
 			$player = $ev->getPlayer();
 			$ev->setCancelled(true);
 	}
-	public function onJoin(PlayerJoinEvent $ev){
+	public function onJoin(PlayerJoinEvent $ev) {
 		$player = $ev->getPlayer();
 		$player->getInventory()->clearAll();
 		$player->setFood(20);
@@ -84,12 +84,12 @@ public function onPreLogin(PlayerPreLoginEvent $ev){
        	$player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector! (§bTap me!)"));
 		$ev->setJoinMessage("");
 	}
-        public function onQuit(PlayerQuitEvent $ev){	
+        public function onQuit(PlayerQuitEvent $ev) {	
         	$player = $ev->getPlayer();
         	$name = $player->getName();
         	$ev->setQuitMessage("");
 	}
-      public function onInteract(PlayerInteractEvent $ev){
+      public function onInteract(PlayerInteractEvent $ev) {
 	   $player = $ev->getPlayer();
        $item = $ev->getItem();
           if($item->getCustomName() == "§a§lServer Selector! (§bTap me!)"){
