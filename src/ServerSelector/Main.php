@@ -78,18 +78,19 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 	}
 	public function onJoin(PlayerJoinEvent $ev) {
 		$player = $ev->getPlayer();
+		$name = $player->getName();
 		$player->getInventory()->clearAll();
 		$player->setFood(20);
        	$player->setHealth(20);
        	$player->setGamemode(0);
         $player->getInventory()->setSize(9);
        	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"));
-		$ev->setJoinMessage("");
+		$ev->setJoinMessage("§a$name §6joined the hub.");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
         	$player = $ev->getPlayer();
         	$name = $player->getName();
-        	$ev->setQuitMessage("");
+        	$ev->setQuitMessage("§a$name §6left the hub.");
 	}
       public function onInteract(PlayerInteractEvent $ev) {
 	   $player = $ev->getPlayer();
