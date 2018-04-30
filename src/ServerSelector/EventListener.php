@@ -19,6 +19,10 @@ use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener {
 
+public function __construct(Main $plugin) {
+	$this->plugin = $plugin;
+	$plugin->getServer()->getPluginManager()->registerEvents($this, $plugin);
+}
 public function onPickup(InventoryPickupItemEvent $ev) {
 		$ev->setCancelled(true);
 }
