@@ -95,10 +95,10 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
               
             $player->getInventory()->clearAll();
             $player->getInventory()->setSize(9);
-            $player->getInventory()->setItem(0, Item::get(46)->setCustomName("§6Void§bFactions§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(2, Item::get(276)->setCustomName("§6Void§bKitPvP§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(4, Item::get(101)->setCustomName("§6Void§bPrisons§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(6, Item::get(322)->setCustomName("§6Void§bHCF§cPE - §dComing Soon"));
+            $player->getInventory()->setItem(0, Item::get(46)->setCustomName("§6Void§bFactions§cPE\n§5Go against the other clans, make your own, invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"));
+            $player->getInventory()->setItem(2, Item::get(276)->setCustomName("§6Void§bKitPvP§cPE\n§5PvP with kits, 1v1 against other players, make your way to the top of the leaderboards, and more!\n(§dTap me!)"));
+            $player->getInventory()->setItem(4, Item::get(101)->setCustomName("§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"));
+            $player->getInventory()->setItem(6, Item::get(322)->setCustomName("§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"));
             
           }elseif($item->getCustomName() == "§6Void§bFactions§cPE (§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
