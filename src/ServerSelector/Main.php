@@ -11,6 +11,7 @@ class Main extends PluginBase {
 	private $listener = null;
 	
 public function onEnable(): void {
+    $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info("Plugin has been enabled.");
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
 }
