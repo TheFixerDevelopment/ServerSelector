@@ -5,6 +5,7 @@ namespace ServerSelector;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\Server;
 
 class Main extends PluginBase {
 	
