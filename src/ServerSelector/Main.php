@@ -55,8 +55,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 				TextFormat::GOLD . "Try again soon";
 			$player->close("", $msg);
 		}
-		$player->getInventory()->setSize(9);
-		$player->getInventory()->setItem(0, Item::get(345)->setCustomName("§a§lServer Selector (§bTap me!)"));
+		$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector (§bTap me!)"));
         }
       public function noInvMove(InventoryTransactionEvent $ev) {
 		$ev->setCancelled(true);
@@ -80,8 +79,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$player->setFood(20);
        	$player->setHealth(20);
        	$player->setGamemode(0);
-		$player->getInventory()->setSize(9);
-       	$player->getInventory()->setItem(2, Item::get(345)->setCustomName("§a§lServer Selector! (§bTap me!)"));
+       	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector! (§bTap me!)"));
 		$ev->setJoinMessage("");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
@@ -97,15 +95,16 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
             $player->getInventory()->clearAll();
             $player->getInventory()->setSize(9);
             $player->getInventory()->setItem(0, Item::get(46)->setCustomName("§6Void§bFactions§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(1, Item::get(276)->setCustomName("§6Void§bKitPvP§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(2, Item::get(101)->setCustomName("§6Void§bPrisons§cPE (§dTap me!)"));
-            $player->getInventory()->setItem(3, Item::get(322)->setCustomName("§6Void§bHCF§cPE - §dComing Soon"));
+            $player->getInventory()->setItem(2, Item::get(276)->setCustomName("§6Void§bKitPvP§cPE (§dTap me!)"));
+            $player->getInventory()->setItem(4, Item::get(101)->setCustomName("§6Void§bPrisons§cPE (§dTap me!)"));
+            $player->getInventory()->setItem(6, Item::get(322)->setCustomName("§6Void§bHCF§cPE - §dComing Soon"));
             
           }elseif($item->getCustomName() == "§6Void§bFactions§cPE (§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
 	  
-      }elseif($item->getCustomName() == "§6Void§bPrisons§cPE (§dTao me!)"){
+      }elseif($item->getCustomName() == "§6Void§bPrisons§cPE (§dTap me!)"){
 			$ev->getPlayer()->transfer("voidprisonspe.ml", "25641");
+		  
       }elseif($item->getCustomName() ==  "§6Void§bKitPvP§cPE (§dTap me!)"){
 			$ev->getPlayer()->transfer("voidkitpvppe.ml", "25625");
 		  
