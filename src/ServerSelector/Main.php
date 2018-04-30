@@ -31,9 +31,7 @@ public function onEnable(): void{
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
 }
 public function onPickup(InventoryPickupItemEvent $event){
-		$player = $event->getInventory()->getHolder();
-		$defaultLevel = $this->getServer()->getDefaultLevel();
-		$event->setCancelled();
+		$event->setCancelled(true);
 }
 public function ItemMove(PlayerDropItemEvent $event){
         $event->setCancelled(true);
