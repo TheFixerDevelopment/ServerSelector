@@ -6,6 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\Server;
+use pocketmine\item\Item;
 use pocketmine\event\Listener;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
@@ -13,11 +14,13 @@ use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
+use pocketmine\inventory\BaseInventory;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\inventory\Inventory;
 use pocketmine\event\player\PlayerInteractEvent;
 
 class Main extends PluginBase implements Listener {
