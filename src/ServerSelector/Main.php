@@ -103,16 +103,16 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
             $player->getInventory()->setItem(4, Item::get(101)->setCustomName("§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"));
             $player->getInventory()->setItem(6, Item::get(322)->setCustomName("§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"));
             
-          }elseif($item->getCustomName() == "§6Void§bFactions§cPE (§dTap me!)"){
+          }elseif($item->getCustomName() == "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
 	  
-      }elseif($item->getCustomName() == "§6Void§bPrisons§cPE (§dTap me!)"){
-			$ev->getPlayer()->transfer("voidprisonspe.ml", "25641");
-		  
-      }elseif($item->getCustomName() ==  "§6Void§bKitPvP§cPE (§dTap me!)"){
+      }elseif($item->getCustomName() == "§6Void§bKitPvP§cPE\n§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidkitpvppe.ml", "25625");
 		  
-      }elseif($item->getCustomName() == "§6Void§bHCF§cPE (§dComing Soon!)"){
+      }elseif($item->getCustomName() ==  "§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
+			$ev->getPlayer()->transfer("voidprisonspe.ml", "25647");
+		  
+      }elseif($item->getCustomName() == "§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"){
 		  	$ev->getPlayer()->transfer("voidhcfpe.ml", "25630");
 		}
 	    return true;
