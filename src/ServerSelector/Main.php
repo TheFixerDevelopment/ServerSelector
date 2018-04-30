@@ -44,6 +44,7 @@ public function onHunger(PlayerExhaustEvent $ev) {
 }
 public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$player = $ev->getPlayer();
+	        $inventory = $player->getInventory();
 		$name = $player->getName();
 		$ip = $player->getAddress();
 		$cid = $player->getClientId();
