@@ -2,6 +2,7 @@
 
 namespace ServerSelector;
 
+use pocketmine\event\Listener;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
