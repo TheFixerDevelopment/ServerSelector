@@ -61,7 +61,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		}
 	        $player->getInventory()->clearAll();
 	        $player->getInventory()->setSize(9);
-		$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector (§bTap me!)"));
+		$player->getInventory()->setItem($this->getConfig()->get("selector_slot"), Item::get($this->getConfig()->get("selector_id"))->setCustomName($this->getConfig()->get("server_selector")->setLore($this->getConfig()->get("server_selectordesc"))));
         }
       public function noInvMove(InventoryTransactionEvent $ev) {
 		$ev->setCancelled(true);
@@ -87,7 +87,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
        	$player->setHealth(20);
        	$player->setGamemode(0);
         $player->getInventory()->setSize(9);
-       	$player->getInventory()->setItem(4, Item::get(345)->setCustomName($this->getConfig()->get("server_selector")));
+       	$player->getInventory()->setItem($this->getConfig()->get("selector_slot"),  Item::get($this->getConfig()->get("selector_id"))->setCustomName($this->getConfig()->get("server_selector")->setLore("server_selectordesc")));
 		$ev->setJoinMessage("§a$name §6joined the hub.");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
@@ -102,21 +102,21 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
               
             $player->getInventory()->clearAll();
             $player->getInventory()->setSize(9);
-            $player->getInventory()->setItem($this->getConfig()->get("slotnumber", Item::get($this->getConfig()->get("itemid")->setCustomName($this->getConfig()->get("server_name", $this->getConfig()->get("description"))))));
-            $player->getInventory()->setItem($this->getConfig()->get("slotnumber02", Item::get($this->getConfig()->get("itemid02")->setCustomName($this->getConfig()->get("server_name2", $this->getConfig()->get("description2"))))));
-            $player->getInventory()->setItem($this->getConfig()->get("slotnumber03", Item::get($this->getConfig()->get("itemid03")->setCustomName($this->getConfig()->get("server_name3", $this->getConfig()->get("description3"))))));
-            $player->getInventory()->setItem($this->getConfig()->get("slotnumber04", Item::get($this->getConfig()->get("itemid04")->setCustomName($this->getConfig()->get("server_name4", $this->getConfig()->get("description4"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber", Item::get($this->getConfig()->get("itemid")->setCustomName($this->getConfig()->get("server_name")->setLore($this->getConfig()->get("description"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber02", Item::get($this->getConfig()->get("itemid02")->setCustomName($this->getConfig()->get("server_name2")->setLore($this->getConfig()->get("description2"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber03", Item::get($this->getConfig()->get("itemid03")->setCustomName($this->getConfig()->get("server_name3")->setLore($this->getConfig()->get("description3"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber04", Item::get($this->getConfig()->get("itemid04")->setCustomName($this->getConfig()->get("server_name4")->setLore($this->getConfig()->get("description4"))))));
             
-          }elseif($item->getCustomName() == $this->getConfig()->get("server_name", $this->getConfig()->get("description"))){
+          }elseif($item->getCustomName() == $this->getConfig()->get("server_name")->setLore($this->getConfig()->get("description"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip", $this->getConfig()->get("server_port")));
 	  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name2", $this->getConfig()->get("description2"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name2")->setLore($this->getConfig()->get("description2"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip2", $this->getConfig()->get("server_port2")));
 		  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name3", $this->getConfig()->get("description3"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name3")->setLore($this->getConfig()->get("description3"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip3", $this->getConfig()->get("server_port3")));
 		  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name4", $this->getConfig()->get("description4"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name4")->setLore($this->getConfig()->get("description4"))){
 		  	$ev->getPlayer()->transfer($this->getConfig()->get("server_ip4", $this->getConfig()->get("server_port4")));
 		}
 	    return true;
