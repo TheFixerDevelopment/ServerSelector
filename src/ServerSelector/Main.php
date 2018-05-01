@@ -108,9 +108,9 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 	    $player->getInventory()->clearAll();
 	    $player->getInventory()->setSize(9);
             $player->getInventory()->setItem(1, Item::get(397, 3)->setCustomName("§6Murder§bMystery\n§bThere's one murder, one bystanderd, and everyone else is innocent.\n§aObjectives:\n§bMurder - §3Has to kill everyone to win.\n§cBystanderd - §4Has a gun, they're suppose to kill the murderer to win.\n§dInnocent - §5Make sure you don't get killed.\n§dComing Soon!"));
-            $player->getInventory()->setItem(8, Item::get(261)->setCustomName("§6Sky§bWars\n§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon."));
-            $player->getInventory()->setItem(9, Item::get(260)->setCustomName("§6Survival§bGames\n§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon."));
-            $player->getInventory()->setItem(3, Item::get(322)->setCustomName("§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"));
+            $player->getInventory()->setItem(3, Item::get(261)->setCustomName("§6Sky§bWars\n§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon."));
+            $player->getInventory()->setItem(5, Item::get(260)->setCustomName("§6Survival§bGames\n§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon."));
+            $player->getInventory()->setItem(7, Item::get(322)->setCustomName("§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"));
             
           }elseif($item->getCustomName() == "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
