@@ -1,0 +1,71 @@
+## ServerSelector configurations by Zeao.
+## Server_Selector: The server selector message.
+server_selector: §a§lServer Selector!\n§5Select a server!(§bTap me!)
+
+## Server Selector description: The lore / description of the server selector.
+server_selectordesc: Select a server!
+
+## Selector Slot: Slot number where the selector will go (1-9)
+selector_slot: 4
+
+## Selector_ID: The server selector id:
+selector_id: 345
+
+## The server name you want the server option to be.
+server_name: §6Void§bFactions§cPE
+
+## The server ip you want the server to transfer to.
+server_ip: voidfactionspe.ml
+
+## The server port you want the server to transfer to.
+server_port: 19132
+
+## The item ID you want that item to be.
+itemid: 46
+
+## The description of that server option.
+description: §5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)
+
+## The server option number two:
+server_name2: §6Void§bKitPvP§cPE
+
+## The server IP you want the second server to transfer to.
+server_ip2: voidkitpvppe.ml
+
+## The server port you want the second server to transfer to.
+server_port2: 25625
+
+## The item ID you want the second server to be.
+itemid02: 276
+
+## The description of that item / server option.
+description2: §5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)
+
+## The server option number three.
+server_name3: §6Void§bPrisons§cPE
+
+## The server IP you want the third server to be.
+server_ip3: voidprisonspe.ml
+
+## The server port you want the third server to be.
+server_port3: 25647
+
+## The item ID you want the third server to be.
+itemid03: 101
+## The server description of that item / server option.
+description3: §5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!
+
+## The server option number four.
+server_name4: §6Void§bHCF§cPE
+
+## The server ip you want the fourth server to be.
+server_ip4: voidhcfpe.ml
+
+## The server port you want the fourth server to be.
+server_port4: 25630
+
+## The item ID you want the second server to be.
+itemid04: 322
+
+## The server description of that item / server option.
+description4: §5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon
