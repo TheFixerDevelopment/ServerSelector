@@ -8,6 +8,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\Server;
 use pocketmine\item\Item;
 use pocketmine\event\Listener;
+use pocketmine\utils\Config;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerItemConsumeEvent;
@@ -27,6 +28,8 @@ class Main extends PluginBase implements Listener {
 	
 public function onEnable(): void {
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    @mkdir($this->getDataFolder());
+    $this->saveDefaultConfig();
     $this->getLogger()->info("Plugin has been enabled.");
     $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
 }
@@ -84,7 +87,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
        	$player->setHealth(20);
        	$player->setGamemode(0);
         $player->getInventory()->setSize(9);
-       	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"));
+       	$player->getInventory()->setItem(4, Item::get(345)->setCustomName($this->getConfig()->get("server_selector")));
 		$ev->setJoinMessage("§a$name §6joined the hub.");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
@@ -95,26 +98,26 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
       public function onInteract(PlayerInteractEvent $ev) {
 	   $player = $ev->getPlayer();
        $item = $ev->getItem();
-          if($item->getCustomName() == "§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"){
+          if($item->getCustomName() == $this->getConfig()->get("server_selector")){
               
             $player->getInventory()->clearAll();
             $player->getInventory()->setSize(9);
-            $player->getInventory()->setItem(0, Item::get(46)->setCustomName("§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"));
-            $player->getInventory()->setItem(2, Item::get(276)->setCustomName("§6Void§bKitPvP§cPE\n§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"));
-            $player->getInventory()->setItem(4, Item::get(101)->setCustomName("§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"));
-            $player->getInventory()->setItem(6, Item::get(322)->setCustomName("§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber", Item::get($this->getConfig()->get("itemid")->setCustomName($this->getConfig()->get("server_name", $this->getConfig()->get("description"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber02", Item::get($this->getConfig()->get("itemid02")->setCustomName($this->getConfig()->get("server_name2", $this->getConfig()->get("description2"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber03", Item::get($this->getConfig()->get("itemid03")->setCustomName($this->getConfig()->get("server_name3", $this->getConfig()->get("description3"))))));
+            $player->getInventory()->setItem($this->getConfig()->get("slotnumber04", Item::get($this->getConfig()->get("itemid04")->setCustomName($this->getConfig()->get("server_name4", $this->getConfig()->get("description4"))))));
             
-          }elseif($item->getCustomName() == "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
-			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
+          }elseif($item->getCustomName() == $this->getConfig()->get("server_name", $this->getConfig()->get("description"))){
+			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip", $this->getConfig()->get("server_port")));
 	  
-      }elseif($item->getCustomName() == "§6Void§bKitPvP§cPE\n§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"){
-			$ev->getPlayer()->transfer("voidkitpvppe.ml", "25625");
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name2", $this->getConfig()->get("description2"))){
+			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip2", $this->getConfig()->get("server_port2")));
 		  
-      }elseif($item->getCustomName() ==  "§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
-			$ev->getPlayer()->transfer("voidprisonspe.ml", "25647");
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name3", $this->getConfig()->get("description3"))){
+			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip3", $this->getConfig()->get("server_port3")));
 		  
-      }elseif($item->getCustomName() == "§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"){
-		  	$ev->getPlayer()->transfer("voidhcfpe.ml", "25630");
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name4", $this->getConfig()->get("description4"))){
+		  	$ev->getPlayer()->transfer($this->getConfig()->get("server_ip4", $this->getConfig()->get("server_port4")));
 		}
 	    return true;
       }
