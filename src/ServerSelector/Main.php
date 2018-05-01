@@ -1,7 +1,5 @@
 <?php
-
 namespace ServerSelector;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
@@ -22,7 +20,6 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\inventory\Inventory;
 use pocketmine\event\player\PlayerInteractEvent;
-
 class Main extends PluginBase implements Listener {
 	
 public function onEnable(): void {
@@ -82,13 +79,13 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 	public function onJoin(PlayerJoinEvent $ev) {
 		$player = $ev->getPlayer();
 		$name = $player->getName();
-		$player->getInventory()->clearAll();
-		$player->setFood(20);
-       	$player->setHealth(20);
+        $player->getInventory()->clearAll();
+ 	$player->setHealth(20);
        	$player->setGamemode(0);
         $player->getInventory()->setSize(9);
        	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"));
-	 $player->getInventory()->setItem(2, Item::get(347)->setCustomName("§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)"));
+        $player->getInventory()->setItem(2, Item::get(347)->setCustomName("§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)"));
+	$pkayer->getInventory()->setItem(6, Item::get(340)->setCustomName("§aServer §bInfo\n§5Tap me!"));
 		$ev->setJoinMessage("§a$name §6joined the hub.");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
@@ -116,7 +113,10 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
             $player->getInventory()->setItem(3, Item::get(261)->setCustomName("§6Sky§bWars\n§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon."));
             $player->getInventory()->setItem(5, Item::get(260)->setCustomName("§6Survival§bGames\n§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon."));
             $player->getInventory()->setItem(7, Item::get(322)->setCustomName("§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"));
-            
+	  } else {
+          if($item->getCustomName() == "§aServer §bInfo\n§5Tap me!"){
+		  $player->sendMessage("§aHere are the server information:\n\n§bServer IP: §3play.voidminerpe.ml\n§bServer Port: §325621\n\n§cYou§fTube §dRank info:\n§a1. §2You must have 100+ §asubscribers!\n§a2. §2You must make a server review for the void network. (Review all servers!)\n§a3. §2You must add the ip & port in the description: IP: play.voidminerpe.ml Port: 25621\n§bDiscord: §3http://tinyurl.com/zeaodc”){
+
           }elseif($item->getCustomName() == "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
 	  
