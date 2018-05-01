@@ -107,16 +107,16 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
             $player->getInventory()->setItem($this->getConfig()->get("slotnumber03", Item::get($this->getConfig()->get("itemid03")->setCustomName($this->getConfig()->get("server_name3")->setLore($this->getConfig()->get("description3"))))));
             $player->getInventory()->setItem($this->getConfig()->get("slotnumber04", Item::get($this->getConfig()->get("itemid04")->setCustomName($this->getConfig()->get("server_name4")->setLore($this->getConfig()->get("description4"))))));
             
-          }elseif($item->getCustomName() == $this->getConfig()->get("server_name")->setLore($this->getConfig()->get("description"))){
+          }elseif($item->getCustomName() == $this->getConfig()->get("server_name")->getLore($this->getConfig()->get("description"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip", $this->getConfig()->get("server_port")));
 	  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name2")->setLore($this->getConfig()->get("description2"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name2")->getLore($this->getConfig()->get("description2"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip2", $this->getConfig()->get("server_port2")));
 		  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name3")->setLore($this->getConfig()->get("description3"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name3")->getLore($this->getConfig()->get("description3"))){
 			$ev->getPlayer()->transfer($this->getConfig()->get("server_ip3", $this->getConfig()->get("server_port3")));
 		  
-      }elseif($item->getCustomName() == $this->getConfig()->get("server_name4")->setLore($this->getConfig()->get("description4"))){
+      }elseif($item->getCustomName() == $this->getConfig()->get("server_name4")->getLore($this->getConfig()->get("description4"))){
 		  	$ev->getPlayer()->transfer($this->getConfig()->get("server_ip4", $this->getConfig()->get("server_port4")));
 		}
 	    return true;
