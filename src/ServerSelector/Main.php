@@ -14,6 +14,7 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\inventory\BaseInventory;
 use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerJoinEvent;
@@ -63,11 +64,19 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
       public function noInvMove(InventoryTransactionEvent $ev) {
 		$ev->setCancelled(true);
 	}
-	public function onDamage(EntityDamageEvent $ev){
-      		if($ev->getCause() === EntityDamageEvent::CAUSE_FALL) {
-          	$ev->setCancelled(true);
-        	}
-    	}
+	public function onHit(EntityDamageEvent $ev){
+		$entity = $event->getEntity();
+		if ($entity instanceof Player) {
+			if ($event instanceof EntityDamageByEntityEvent) {
+				$damager = $event->getDamager();
+				if ($damager instanceof Player) {
+					if ($entity->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
+						$event->setCancelled(true);
+					}
+				}
+			}
+		}
+	}
 	public function onPlace(BlockPlaceEvent $ev) {
 			$player = $ev->getPlayer();
 			$ev->setCancelled(true);
