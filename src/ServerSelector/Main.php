@@ -85,7 +85,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
         $player->getInventory()->setSize(9);
        	$player->getInventory()->setItem(4, Item::get(345)->setCustomName("§a§lServer Selector!\n§5Select a server!\n(§bTap me!)"));
         $player->getInventory()->setItem(2, Item::get(347)->setCustomName("§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)"));
-	$pkayer->getInventory()->setItem(6, Item::get(340)->setCustomName("§aServer §bInfo\n§5Tap me!"));
+	$player->getInventory()->setItem(6, Item::get(340)->setCustomName("§aServer §bInfo\n§5Tap me!"));
 		$ev->setJoinMessage("§a$name §6joined the hub.");
 	}
         public function onQuit(PlayerQuitEvent $ev) {	
