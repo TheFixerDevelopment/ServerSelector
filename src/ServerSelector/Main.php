@@ -123,9 +123,9 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$ev->setCancelled(true);
 	}
 	public function onHit(EntityDamageEvent $ev){
-		$entity = $event->getEntity();
+		$entity = $ev->getEntity();
 		if ($entity instanceof Player) {
-			if ($event instanceof EntityDamageByEntityEvent) {
+			if ($ev instanceof EntityDamageByEntityEvent) {
 				$damager = $event->getDamager();
 				if ($damager instanceof Player) {
 					if ($entity->getLevel()->getFolderName() == $this->getServer()->getDefaultLevel()->getFolderName()) {
@@ -168,7 +168,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
       }	  
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidprisonspe.ml", "25647");
-		  
+      }
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"){
 		  	$ev->getPlayer()->transfer("voidhcfpe.ml", "25630");
       }
