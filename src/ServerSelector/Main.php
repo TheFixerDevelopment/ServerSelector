@@ -1,7 +1,5 @@
 <?php
-
 namespace ServerSelector;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
@@ -23,7 +21,6 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\inventory\Inventory;
 use pocketmine\event\player\PlayerInteractEvent;
-
 class Main extends PluginBase implements Listener {
 	
 public function onEnable(): void {
@@ -198,5 +195,4 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		 $this->getInfo($player);
 	    return true;
       }
-}
 }
