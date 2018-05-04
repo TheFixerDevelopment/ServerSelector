@@ -87,7 +87,7 @@ $inv->clearAll();
 $exit = Item::get(351, 1, 1);
 $exit->setCustomName(TextFormat::RESET . TextFormat::RED . "§aExit");
 $info = Item::get(340, 1, 1);
-		$info->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)");
+		$info->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§aServer §bInfo\n§5Tap me!");
 		$inv->setItem(8, $exit);
 		$inv->setItem(0, $info);
 }
