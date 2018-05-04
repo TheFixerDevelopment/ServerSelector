@@ -188,7 +188,7 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"){
 		  	$player->sendMessage("§c§lNew Game Coming Soon!");
       }
-       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§l§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)") {
+       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)") {
            
            $this->getGames($player);
 		}
