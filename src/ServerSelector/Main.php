@@ -26,7 +26,7 @@ class Main extends PluginBase implements Listener {
 public function onEnable(): void {
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info("Plugin has been enabled.");
-    $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§6§lVoid§bMiner§cPE §dNetwork");
+    $this->getServer()->getNetwork()->setName(TextFormat::BOLD . TextFormat::GREEN . "§l§4Auri§cous§6PE §dNetwork");
 }
 public function onPickup(InventoryPickupItemEvent $ev) {
 		$ev->setCancelled(true);
@@ -46,13 +46,17 @@ public function getTeleporter(Player $player){
 		$exit = Item::get(351, 1, 1);
 		$exit->setCustomName(TextFormat::RESET . TextFormat::RED . "§aExit");
 		$Factions = Item::get(46, 1, 1);
-		$Factions->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)");
+		$Factions->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§bFactions\n§cTap me!");
+	        $Factions->setLore("§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n");
 		$Prisons = Item::get(276, 1, 1);
-		$Prisons->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§6Void§bKitPvP§cPE\n§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)");
+		$Prisons->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§4Kit§cPvP\n§bComing soon!");
+	        $Prisons->setLore("§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n");
 		$KitPvP = Item::get(101, 1, 1);
-		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)");
+		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§7Prisons\n§bComing soon!");
+	        $KitPvP->setLore("§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)");
 		$HCF = Item::get(322, 1, 1);
-		$HCF->setCustomName(TextFormat::RESET . TextFormat::YELLOW . "§bHCF - §cComing Soon");
+		$HCF->setCustomName(TextFormat::RESET . TextFormat::YELLOW . "§bHCF - §cComing soon");
+	        $HCF->setLore("§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon");
 		$inv->setItem(8, $exit);
 		$inv->setItem(0, $Factions);
 		$inv->setItem(1, $Prisons);
@@ -65,13 +69,17 @@ $inv->clearAll();
 $exit = Item::get(351, 1, 1);
 $exit->setCustomName(TextFormat::RESET . TextFormat::RED . "§aExit");
 $MurderMystery = Item::get(276, 1, 1);
-		$MurderMystery->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§6Murder§bMystery\n§bThere's one murder, one bystanderd, and everyone else is innocent.\n§aObjectives:\n§bMurder - §3Has to kill everyone to win.\n§cBystanderd - §4Has a gun, they're suppose to kill the murderer to win.\n§dInnocent - §5Make sure you don't get killed.\n§dComing Soon!");
+		$MurderMystery->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§4Murder§6Mystery");
+	        $MurderMystery->setLore("§bThere's one murder, one bystanderd, and everyone else is innocent.\n§aObjectives:\n§bMurder - §3Has to kill everyone to win.\n§cBystanderd - §4Has a gun, they're suppose to kill the murderer to win.\n§dInnocent - §5Make sure you don't get killed.\n§dComing Soon!");
 		$Skywars = Item::get(260, 1, 1);
-		$Skywars->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§6Sky§bWars\n§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon.");
+		$Skywars->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§6Sky§bWars");
+	        $Skywars->setLore("§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon.");
 		$SG = Item::get(322, 1, 1);
-		$SG->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§6Survival§bGames\n§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon.");
+		$SG->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§6Survival§bGames");
+	        $SG->setLore("§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon.");
 		$UHC = Item::get(261, 1, 1);
-		$UHC->setCustomName(TextFormat::RESET . TextFormat::YELLOW . "§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon");
+		$UHC->setCustomName(TextFormat::RESET . TextFormat::YELLOW . "§6U§bH§cC");
+	        $UHC->setLore("§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon");
 		$inv->setItem(8, $exit);
 		$inv->setItem(0, $MurderMystery);
 		$inv->setItem(1, $Skywars);
@@ -109,7 +117,8 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		$item1 = Item::get(345, 0, 1);
 		$item1->setCustomName(TextFormat::RESET . TextFormat::GOLD . "§a§lServer Selector (§bTap me!)");
 		$item2 = Item::get(347, 0, 1);
-		$item2->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)");
+		$item2->setCustomName(TextFormat::RESET . TextFormat::BLUE . "§a§lGames Selector");
+	        $item2->setLore("5§lSelect a Game to play!\n(§bTap me!)");
 		$item3 = Item::get(340, 0, 1);
 		$item3->setCustomName("§aServer §bInfo\n§5Tap me!");
 		$inv->setItem(0, $item2);
@@ -156,41 +165,51 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
       public function onInteract(PlayerInteractEvent $ev) {
 	   $player = $ev->getPlayer();
        	   $in = $ev->getPlayer()->getInventory()->getItemInHand()->getCustomName();
+	   $lore = $ev->getPlayer()->getInventory()->getItemInHand()->getLore();
 		$inv = $player->getInventory();
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bFactions§cPE\n§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§bFactions\n§cTap me!"){
+      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
       } 
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bKitPvP§cPE\n§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§4Kit§cPvP\n§bComing soon!"){
+      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidkitpvppe.ml", "25625");
       }	  
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bPrisons§cPE\n§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§7Prisons\n§bComing soon!"){
+      if ($lore == "§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
 			$ev->getPlayer()->transfer("voidprisonspe.ml", "25647");
       }
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Void§bHCF§cPE\n§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§bHCF - §cComing soon"){
+      if ($lore == TextFormat::RESE . "§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon."){
 		  	$ev->getPlayer()->transfer("voidhcfpe.ml", "25630");
       }
       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§lServer Selector (§bTap me!)") {
 			
 			$this->getTeleporter($player);
       }
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Murder§bMystery\n§bThere's one murder, one bystanderd, and everyone else is innocent.\n§aObjectives:\n§bMurder - §3Has to kill everyone to win.\n§cBystanderd - §4Has a gun, they're suppose to kill the murderer to win.\n§dInnocent - §5Make sure you don't get killed.\n§dComing Soon!"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§4Murder§6Mystery"){
+      if ($lore == "§bThere's one murder, one bystanderd, and everyone else is innocent.\n§aObjectives:\n§bMurder - §3Has to kill everyone to win.\n§cBystanderd - §4Has a gun, they're suppose to kill the murderer to win.\n§dInnocent - §5Make sure you don't get killed.\n§dComing Soon!"){
 			$player->sendMessage("§c§lNew Game Coming Soon!");
       }
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Sky§bWars\n§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon."){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Sky§bWars"){
+      if ($lore == "§bYou're in the sky, you have to:\n§cLoot chests, Get good loot\n§dand kill players!\n§eLast man standing wins!\n§1Coming Soon."){
 			$player->sendMessage("§c§lNew Game Coming Soon!");
       }
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Survival§bGames\n§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon."){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6Survival§bGames"){
+      if ($lore == "§bYou're in a survival area, filled with chests\n§cFilled with Loot\n§dYour objective is to\n§eKill the players.\n§1Last man standing wins.\n§2Coming soon."){
 			$player->sendMessage("§c§lNew Game Coming Soon!");
       }
-      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6U§bH§cC\n§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"){
+      if ($in == TextFormat::RESET . TextFormat::GOLD . "§6U§bH§cC"){
+      if ($lore == "§bUHC = UltraHardCore.\n§cYou're in a survival map\n§dbut things get extremly hard.\n§eThere's no: Regeneration\n§1When you die, you get banned\n§2until the game is over.\n§3Coming Soon"){
 		  	$player->sendMessage("§c§lNew Game Coming Soon!");
       }
-       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§lGames Selector\n§5§lSelect a Game to play!\n(§bTap me!)") {
+       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§lGames Selector"){
+       if($lore == "§5§lSelect a Game to play!\n(§bTap me!)") {
            
            $this->getGames($player);
 		}
 		if($in == TextFormat::RESET . TextFormat::GOLD . "§aServer §bInfo\n§5Tap me!");
-		 $player->sendMessage("§aHere are the server information:\n\n§bServer IP: §3play.voidminerpe.ml\n§bServer Port: §325621\n\n§cYou§fTube §dRank info:\n§a1. §2You must have 100+ §asubscribers!\n§a2. §2You must make a server review for the void network. (Review all servers!)\n§a3. §2You must add the ip & port in the description: IP: play.voidminerpe.ml Port: 25621\n§bDiscord: §3http://tinyurl.com/zeaodc");
+		 $player->sendMessage("§aHere are the server information:\n\n§bServer IP: §3play.auriouspe.ml\n§bServer Port: §325621\n\n§cYou§fTube §dRank info:\n§a1. §2You must have 100+ §asubscribers!\n§a2. §2You must make a server review for the void network. (Review all servers!)\n§a3. §2You must add the ip & port in the description: IP: play.voidminerpe.ml Port: 25621\n§bDiscord: §3http://tinyurl.com/zeaodc");
 		 
 		 $this->getInfo($player);
 	    return true;
