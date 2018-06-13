@@ -213,5 +213,14 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 		 
 		 $this->getInfo($player);
 	    return true;
+       }
+      }
+      }
+      }
+      }
+      }
+      }
+      }
+      }
       }
 }
