@@ -53,10 +53,10 @@ public function getTeleporter(Player $player){
 	        $Prisons->setLore("§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n");
 		$KitPvP = Item::get(101, 1, 1);
 		$KitPvP->setCustomName(TextFormat::RESET . TextFormat::GREEN . "§7Prisons\n§bComing soon!");
-	        $KitPvP->setLore("§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)");
+	        $KitPvP->setLore("§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n");
 		$HCF = Item::get(322, 1, 1);
 		$HCF->setCustomName(TextFormat::RESET . TextFormat::YELLOW . "§bHCF - §cComing soon");
-	        $HCF->setLore("§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon");
+	        $HCF->setLore("§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n");
 		$inv->setItem(8, $exit);
 		$inv->setItem(0, $Factions);
 		$inv->setItem(1, $Prisons);
@@ -168,19 +168,19 @@ public function onPreLogin(PlayerPreLoginEvent $ev) {
 	   $lore = $ev->getPlayer()->getInventory()->getItemInHand()->getLore();
 		$inv = $player->getInventory();
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§bFactions\n§cTap me!"){
-      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n(§dTap me!)"){
+      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5Go against the other clans\n§5make your own\n§5invite your loyal members to your clan\n§5Raid people, and more!\n§tYour goal is Beating the other factions!\n"){
 			$ev->getPlayer()->transfer("voidfactionspe.ml", "19132");
       } 
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§4Kit§cPvP\n§bComing soon!"){
-      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n(§dTap me!)"){
+      if ($lore == TextFormat::RESET . TextFormat::GOLD . "§5PvP with kits\n§51v1 against other players\n§5make your way to the top of the leaderboards, and more!\n"){
 			$ev->getPlayer()->transfer("voidkitpvppe.ml", "25625");
       }	  
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§7Prisons\n§bComing soon!"){
-      if ($lore == "§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n(§dTap me!)"){
+      if ($lore == "§5You're in a prison, you have to mine to rankup.\n§5Your goal is to rank all the way up to Z!\n§5There's also PvP mines as well!\n"){
 			$ev->getPlayer()->transfer("voidprisonspe.ml", "25647");
       }
       if ($in == TextFormat::RESET . TextFormat::GOLD . "§bHCF - §cComing soon"){
-      if ($lore == TextFormat::RESE . "§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n§dComing Soon."){
+      if ($lore == TextFormat::RESE . "§5HCF = HardCoreFactions. It's factions, but hardcore, which means it's harder.\n§5When you die, you get death banned.\n§5Everything is hardcore mode = More challenging\n"){
 		  	$ev->getPlayer()->transfer("voidhcfpe.ml", "25630");
       }
       if($in == TextFormat::RESET . TextFormat::GOLD . "§a§lServer Selector (§bTap me!)") {
